@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 入口文件 在此导入外部文件
 
 Vue.config.productionTip = false
 
