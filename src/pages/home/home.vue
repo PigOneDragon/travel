@@ -1,9 +1,16 @@
 <template>
-    <div>home</div>
+    <div>
+        <header-com></header-com>
+    </div>
 </template>
 <script>
+import HeaderCom from './components/header'
+
 export default {
-  name: 'home'
+  name: 'homecom',
+  components: {
+    HeaderCom
+  }
 }
 </script>
 <style>

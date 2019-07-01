@@ -4,8 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // 入口文件 在此导入外部文件
+import './assets/css/cui.css'
+// 手机端解决点击延时的三方库
+import fastClick from 'fastclick'
 
 Vue.config.productionTip = false
+// 绑定fastclick
+fastClick.attach(document.body)
 
 /* eslint-disable no-new */
 new Vue({
