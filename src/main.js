@@ -7,7 +7,11 @@ import router from './router'
 import './assets/css/cui.css'
 // 手机端解决点击延时的三方库
 import fastClick from 'fastclick'
-
+import './assets/font/iconfont.css'
+// 轮播插件 全局插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 // 绑定fastclick
 fastClick.attach(document.body)
