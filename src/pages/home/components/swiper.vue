@@ -16,11 +16,11 @@ export default {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
-        loop:true
+        loop: true
       },
       imgList: [{
         id: '01',
-        imgUrl: 'https://img1.qunarzz.com/order/comp/1805/2e/6e407f088bfb902.png'
+        imgUrl: 'https://simg1.qunarzz.com/site/images/wap/home/recommend/20160509_banner_750x376.jpg'
       },
       {
         id: '02',
