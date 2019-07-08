@@ -20,7 +20,7 @@ export default {
       },
       imgList: [{
         id: '01',
-        imgUrl: 'https://simg1.qunarzz.com/site/images/wap/home/recommend/20160509_banner_750x376.jpg'
+        imgUrl: 'https://imgs.qunarzz.com/piao/fusion/1707/6a/ef538175bc41a802.jpg'
       },
       {
         id: '02',

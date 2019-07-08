@@ -74,7 +74,11 @@ export default {
         id: '10',
         imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
         desc: '当地'
-      }]
+      }],
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        loop: true
+      }
     }
   },
   // 利用计算属性对list进行计算，计算图标出现的页码数 8个一屏，超出的显示第二屏
@@ -90,10 +94,6 @@ export default {
       })
       return pages
     }
-  },
-  swiperOption: {
-    pagination: '.swiper-pagination',
-    loop: true
   }
 }
 </script>
