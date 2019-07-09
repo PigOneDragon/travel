@@ -1,7 +1,7 @@
 <template>
     <div>
-        <header-com></header-com>
-        <header-swiper></header-swiper>
+        <header-com :city="city"></header-com>
+        <header-swiper :swiperList="swiperList"></header-swiper>
         <main-nav></main-nav>
         <main-rec></main-rec>
         <main-hot></main-hot>
@@ -13,7 +13,7 @@ import HeaderSwiper from './components/swiper'
 import MainNav from './components/list'
 import MainRec from './components/rec'
 import MainHot from './components/tuijian'
-
+import axios from 'axios'
 export default {
   name: 'home',
   components: {
@@ -22,6 +22,32 @@ export default {
     MainNav,
     MainRec,
     MainHot
+  },
+  //  向各个子组件传递的数据
+  data: function () {
+    return {
+      city: '',
+      swiperList: []
+    }
+  },
+  methods: {
+    getInfo () {
+      //  这里的'/api'为webpack封装过的转发路径，在config文件夹下的index.js dev{proxyTable:{服务器，转发至路径}}
+      axios.get('/api/index.json')
+        .then(this.getInfoSuc)
+    },
+    getInfoSuc (res) {
+      res = res.data
+      if (res && res.data) {
+        const data = res.data
+        this.city = data.city
+        this.swiperList = data.swiperList
+      }
+    }
+  },
+  //  当数据加载完成时执行ajax请求
+  mounted () {
+    this.getInfo()
   }
 }
 </script>

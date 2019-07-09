@@ -4,13 +4,14 @@
             <div class="iconfont">&#xe624;</div>
         </div>
         <div class="inp"><span class="iconfont">&#xe632;</span>请输入。。</div>
-        <div class="hr">位置<span class="iconfont">&#xe64a;</span></div>
+        <div class="hr">{{city}}<span class="iconfont">&#xe64a;</span></div>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'headercom'
+  name: 'headercom',
+  props: ['city']
 }
 </script>
 
