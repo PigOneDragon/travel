@@ -1,10 +1,12 @@
 <template>
     <div class="header">
         <div class="hl">
-            <div class="iconfont">&#xe624;</div>
+            <span class="iconfont">&#xe624;</span>
         </div>
         <div class="inp"><span class="iconfont">&#xe632;</span>请输入。。</div>
-        <div class="hr">{{city}}<span class="iconfont">&#xe64a;</span></div>
+        <router-link to="/city">
+            <div class="hr">{{city}}<span class="iconfont">&#xe64a;</span></div>
+        </router-link>
     </div>
 </template>
 
@@ -21,6 +23,7 @@ export default {
     line-height: 0.86rem;
     display: flex;
     color: #fff;
+    padding: 0 .2rem;
 }
 .hl {
     float: left;
@@ -30,6 +33,7 @@ export default {
     float: right;
     width: 1.24rem;
     text-align: center;
+    color: #fff;
 }
 .inp{
     flex-grow: 1;

@@ -1,5 +1,6 @@
 <template>
-    <swiper :options="swiperOption" >
+<!-- v-if添加在sweiper-slide组件外的sweiper上 -->
+    <swiper :options="swiperOption" v-if="showSwiper">
         <!-- slides -->
         <swiper-slide v-for='item of swiperList' :key='item.id'>
             <img class='pic' :src='item.imgUrl' alt="">
@@ -27,6 +28,12 @@ export default {
         id: '02',
         imgUrl: 'https://simg1.qunarzz.com/site/images/wap/home/recommend/20160509_banner_750x376.jpg'
       }] */
+    }
+  },
+  //  添加该计算属性，使轮播创建时传过来的是完整数组而不是为获取到数据的空数组（导致轮播直接显示最后一个）
+  computed: {
+    showSwiper () {
+      return this.swiperList.length
     }
   }
 }

@@ -1,12 +1,12 @@
 <template>
     <ul class="ul-imgtxt1">
-        <li v-for="item of infoList" :key="item.id">
+        <li v-for="item of weekList" :key="item.id">
             <a href="" class="con">
               <div class="pic">
                 <img :src="item.imgUrl" alt="">
               </div>
               <div class="txt">
-                  <h3>{{item.tit}}</h3>
+                  <h3>{{item.title}}</h3>
                   <div class="desc">{{item.desc}}</div>
               </div>
             </a>
@@ -17,7 +17,8 @@
 <script>
 export default {
   name: 'MainHot',
-  data: function () {
+  props: ['weekList']
+  /* data: function () {
     return {
       infoList: [{
         id: '0001',
@@ -32,7 +33,7 @@ export default {
         desc: '清幽山乡，人间仙境，世外桃源，雄壮而苍茫的红崖绝壁，妙曼而秀雅的山乡风韵，太行风光的典型代表'
       }]
     }
-  }
+  } */
 }
 </script>
 

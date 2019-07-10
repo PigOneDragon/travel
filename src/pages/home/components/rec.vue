@@ -1,10 +1,11 @@
 <template>
     <ul class="ul-imgtxt">
-        <li v-for="item of infoList" :key="item.id">
+        <li v-for="item of recList" :key="item.id">
             <a href="" class="con">
               <div class="pic">
                 <img :src="item.imgUrl" alt="">
               </div>
+              <div class="tit">{{item.title}}</div>
               <div class="txt">{{item.desc}}</div>
             </a>
         </li>
@@ -14,7 +15,8 @@
 <script>
 export default {
   name: 'MainRec',
-  data: function () {
+  props: ['recList']
+  /*  data: function () {
     return {
       infoList: [{
         id: '0001',
@@ -22,7 +24,7 @@ export default {
         desc: '八达岭长城+鸟巢'
       }]
     }
-  }
+  } */
 }
 </script>
 
@@ -45,11 +47,14 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .ul-imgtxt .txt {
-    padding-top: .4rem;
+  .ul-imgtxt .tit {
+    padding-top: .2rem;
     overflow: hidden;
     font-size: .36rem;
     color: #000;
     line-height: 1.8;
+  }
+  .ul-imgtxt .txt{
+    font-size: .28rem;
   }
 </style>

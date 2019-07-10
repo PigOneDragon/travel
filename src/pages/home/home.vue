@@ -2,9 +2,9 @@
     <div>
         <header-com :city="city"></header-com>
         <header-swiper :swiperList="swiperList"></header-swiper>
-        <main-nav></main-nav>
-        <main-rec></main-rec>
-        <main-hot></main-hot>
+        <main-nav :iconList="iconList"></main-nav>
+        <main-rec :recList="recList"></main-rec>
+        <main-hot :weekList="weekList"></main-hot>
     </div>
 </template>
 <script>
@@ -27,7 +27,9 @@ export default {
   data: function () {
     return {
       city: '',
-      swiperList: []
+      swiperList: [],
+      iconList: [],
+      recList: []
     }
   },
   methods: {
@@ -42,6 +44,9 @@ export default {
         const data = res.data
         this.city = data.city
         this.swiperList = data.swiperList
+        this.iconList = data.iconList
+        this.recList = data.recommendList
+        this.weekList = data.weekendList
       }
     }
   },
