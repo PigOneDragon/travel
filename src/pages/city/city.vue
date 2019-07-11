@@ -1,14 +1,43 @@
 <template>
     <div class="city">
       <city-header></city-header>
+      <city-list :hotCities="hotCities" :cities="cities"></city-list>
     </div>
 </template>
 <script>
+import axios from 'axios'
 import CityHeader from './components/cityheader'
+import CityList from './components/citylist'
 export default {
   name: 'city',
   components: {
-    CityHeader
+    CityHeader,
+    CityList
+  },
+  data () {
+    return {
+      hotCities: [],
+      cities: {}
+    }
+  },
+  methods: {
+    getInfo () {
+      //  这里的'/api'为webpack封装过的转发路径，在config文件夹下的index.js dev{proxyTable:{服务器，转发至路径}}
+      axios.get('/api/city.json')
+        .then(this.getInfoSuc)
+    },
+    getInfoSuc (res) {
+      res = res.data
+      if (res && res.data) {
+        const data = res.data
+        this.hotCities = data.hotCities
+        this.cities = data.cities
+      }
+    }
+  },
+  //  当数据加载完成时执行ajax请求
+  mounted () {
+    this.getInfo()
   }
 }
 </script>
