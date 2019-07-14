@@ -1,7 +1,7 @@
 <template>
     <div class="city">
       <city-header></city-header>
-      <city-list :hotCities="hotCities" :cities="cities"></city-list>
+      <city-list :hotCities="hotCities" :cities="cities" :ele="ele" @subClick="preClick"></city-list>
     </div>
 </template>
 <script>
@@ -17,7 +17,9 @@ export default {
   data () {
     return {
       hotCities: [],
-      cities: {}
+      cities: {},
+      // 将收到的子组件（ul-zm）传递过来的值再传给子组件的另一个组件元素(ul-list)
+      ele: ''
     }
   },
   methods: {
@@ -33,6 +35,11 @@ export default {
         this.hotCities = data.hotCities
         this.cities = data.cities
       }
+    },
+    // 接收子组件citylist下的ul-zm的传递值
+    preClick (v) {
+      this.ele = v
+      // console.log(this.ele)
     }
   },
   //  当数据加载完成时执行ajax请求

@@ -29,7 +29,8 @@ export default {
       city: '',
       swiperList: [],
       iconList: [],
-      recList: []
+      recList: [],
+      weekList: []
     }
   },
   methods: {
