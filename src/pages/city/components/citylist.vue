@@ -43,8 +43,14 @@ export default {
   },
   data () {
     return {
-      flag: false
+      flag: false,
+      startY: 0,
+      timer: {}
     }
+  },
+  updated () {
+    // 当第一次加载为获取ajax数据时，该组件接收到的是个空数据，当获取到ajax数据后，组件更新，更新时获取元素A 距顶部的距离 方便后期调用
+    this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
     //   点击右侧字母，将触发点击事件的元素值传递给父组件（city.vue>city-list组件）
@@ -60,17 +66,33 @@ export default {
     },
     touchMove (e) {
       if (this.flag) {
-        const startY = this.$refs['A'][0].offsetTop
+        // 这里每次滑动都触发了计算，放在updates生命周期钩子里减少计算
+        // const startY = this.$refs['A'][0].offsetTop
         // console.log(startY)
         // 获取滑动时手指坐标
-        const indexY = e.touches[0].clientY
+        /*  const indexY = e.touches[0].clientY
         // console.log(indexY)
         // 手指坐标减去首字母头部距离 除以字母间距 向下取整得到滑动至第几个字母
-        var idxY = Math.floor((indexY - startY - 21) / 21)
+        var idxY = Math.floor((indexY - this.startY - 21) / 21)
         if (idxY >= 0 && idxY <= 22) {
           // console.log(idxY)
           this.$emit('subClick', this.cityIdx[idxY])
+        } */
+        // 函数节流，16ms触发一次，两次触发事件不满16ms间隔的不执行
+        if (this.timer) {
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          // 获取滑动时手指坐标
+          const indexY = e.touches[0].clientY
+          // console.log(indexY)
+          // 手指坐标减去首字母头部距离 除以字母间距 向下取整得到滑动至第几个字母
+          var idxY = Math.floor((indexY - this.startY - 21) / 21)
+          if (idxY >= 0 && idxY <= 22) {
+            // console.log(idxY)
+            this.$emit('subClick', this.cityIdx[idxY])
+          }
+        }, 16)
       }
     },
     touchEnd () {
@@ -110,7 +132,7 @@ export default {
 <style scoped>
 .cityWarp {
     position: absolute;
-    top: 0.86rem;
+    top: 1.6rem;
     right: 0;
     bottom: 0;
     left: 0;

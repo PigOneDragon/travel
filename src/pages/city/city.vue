@@ -1,6 +1,6 @@
 <template>
     <div class="city">
-      <city-header></city-header>
+      <city-header :cities="cities"></city-header>
       <city-list :hotCities="hotCities" :cities="cities" :ele="ele" @subClick="preClick"></city-list>
     </div>
 </template>
