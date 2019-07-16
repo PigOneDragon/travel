@@ -5,7 +5,7 @@
                 <div class="tit">当前位置</div>
                 <dl>
                     <dd>
-                        <div class="con">北京</div>
+                        <div class="con">{{this.$store.state.city}}</div>
                     </dd>
                 </dl>
             </li>
@@ -13,7 +13,8 @@
                 <div class="tit">热门城市</div>
                 <dl>
                     <dd v-for="item of hotCities" :key="item.id">
-                        <div class="con">{{item.name}}</div>
+                      <!-- 绑定事件，点击后更新vuex仓库的公用变量 -->
+                        <div class="con" @click="handVxClick(item.name)">{{item.name}}</div>
                     </dd>
                 </dl>
             </li>
@@ -21,7 +22,7 @@
             <li v-for="(items, key) of cities" :key="key" :ref="key" @touchstatr="touchS">
                 <div class="tit">{{key}}</div>
                 <div class="item-list">
-                    <div class="item" v-for="item of items" :key="item.id" >{{item.name}}</div>
+                    <div class="item" v-for="item of items" :key="item.id" @click="handVxClick(item.name)">{{item.name}}</div>
                 </div>
             </li>
         </ul>
@@ -97,6 +98,13 @@ export default {
     },
     touchEnd () {
       this.flag = false
+    },
+    // 组件更新，调用dispatch传递给Actions （再自定义个函数,将改变的值传入）
+    handVxClick (value) {
+      this.$store.dispatch('changeCity', value)
+      // alert(value)
+      // 点击后跳转至首页路由
+      this.$router.push('./')
     }
   },
   // 实现点击字母索引跳转至相应城市列表

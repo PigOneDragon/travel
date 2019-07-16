@@ -13,7 +13,7 @@
            <!-- 搜索内容显示 ,当搜索框无值时隐藏-->
            <div class="search_area" v-show="keyword" ref="search_area">
                <ul>
-                   <li class="item" v-for="item of list" :key="item.id">{{item.name}}</li>
+                   <li class="item" v-for="item of list" :key="item.id" @click="handVxClick(item.name)">{{item.name}}</li>
                    <!-- 未找到数据的显示与否，通过计算属性判断下list是否为空即可 -->
                    <li class="item" v-show="hasData">未查询到数据！</li>
                </ul>
@@ -36,6 +36,15 @@ export default {
       // 遍历city.json中的城市列表
       list: [],
       timer: null
+    }
+  },
+  methods: {
+    // 组件更新，调用dispatch传递给Actions （再自定义个函数,将改变的值传入）
+    handVxClick (value) {
+      this.$store.dispatch('changeCity', value)
+      // alert(value)
+      // 点击后跳转至首页路由
+      this.$router.push('./')
     }
   },
   // 监听输入值变化

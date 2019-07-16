@@ -5,15 +5,15 @@
         </div>
         <div class="inp"><span class="iconfont">&#xe632;</span>请输入。。</div>
         <router-link to="/city">
-            <div class="hr">{{city}}<span class="iconfont">&#xe64a;</span></div>
+        <!-- 通过vuex在各组件传值 -->
+            <div class="hr">{{this.$store.state.city}}<span class="iconfont">&#xe64a;</span></div>
         </router-link>
     </div>
 </template>
 
 <script>
 export default {
-  name: 'headercom',
-  props: ['city']
+  name: 'headercom'
 }
 </script>
 
@@ -31,7 +31,7 @@ export default {
 }
 .hr{
     float: right;
-    width: 1.24rem;
+    min-width: 1.24rem;
     text-align: center;
     color: #fff;
 }

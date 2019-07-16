@@ -11,15 +11,18 @@ import './assets/font/iconfont.css'
 // 轮播插件 全局插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+// 导入vuex对象
+import store from './store/store'
 Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 // 绑定fastclick
 fastClick.attach(document.body)
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  // 单例对象
+  store,
   components: { App },
   template: '<App/>'
 })
