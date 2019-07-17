@@ -1,14 +1,22 @@
 <template>
     <ul class="ul-imgtxt">
-        <li v-for="item of recList" :key="item.id">
-            <a href="" class="con">
+      <!-- 点击跳转至详情页，利用route-link的tag，属性，将要点击的元素绑定在链接上，减少写默认a的样式 -->
+      <!-- 静态绑定路径 to="/跳转页" -->
+      <!-- 动态绑定路径 to=" '/跳转页/' + 参数 " -->
+        <router-link
+         v-for="item of recList"
+         :key="item.id"
+         tag:="li"
+         :to=" '/detail/' + item.id "
+         >
+            <div class="con">
               <div class="pic">
                 <img :src="item.imgUrl" alt="">
               </div>
               <div class="tit">{{item.title}}</div>
               <div class="txt">{{item.desc}}</div>
-            </a>
-        </li>
+            </div>
+        </router-link>
     </ul>
 </template>
 
@@ -30,7 +38,6 @@ export default {
 
 <style>
   .ul-imgtxt .con{
-    display: block;
     overflow: hidden;
     margin: 0 .2rem;
   }

@@ -36,6 +36,8 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      // 自定义个路径
+      // 'detail': resolve('src/pages/detail')
     }
   },
   module: {
@@ -50,6 +52,12 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      // 运行使用less语法
+      {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader",
+        options: { sourceMap: true }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
