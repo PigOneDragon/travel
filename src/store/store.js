@@ -16,7 +16,7 @@ export default new Vuex.Store({
   actions: {
     // actions模块接收从组件dispatch过来的数据，包含上下文信息（ctx,ctx中包含commit方法）与传过来的变量
     changeCity (ctx, city) {
-      ctx.commit('changeCity', city)
+      ctx.commit('changeCity', city) // 这里的changeCity为mutations中定义的方法
     }
   },
   mutations: {
